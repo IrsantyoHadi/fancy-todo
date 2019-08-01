@@ -1,5 +1,7 @@
 **Fancy Todo**
 ----------------------------------------
+## Deploy Link
+http://fancytodo.irsantyohadi.com/
 
 ## Endpoint
 baseUrl = http:localhost:3000/
