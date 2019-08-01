@@ -16,7 +16,7 @@ let todoSchema = new Schema({
   },
   dueDate: {
     type : Date,
-    required : [true , 'Please provide a Due Date'],
+    required : [true , 'You need to set the Due Date'],
     validate : {
       validator : function (value) {
         if (value !== null) {

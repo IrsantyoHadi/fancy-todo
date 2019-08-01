@@ -11,7 +11,7 @@ if (!localStorage.token) {
   getProfile()
   $("#profile").append(`
 <h5><strong> Hai,</strong></h5>
-<h6><strong>${localStorage.getItem('nama')}</strong></h6>
+<h6><strong>${(localStorage.getItem('nama')) ? localStorage.getItem('nama') : 'stranger'}</strong></h6>
 `)
   if (localStorage.getItem('profpic')) {
     $("#profpic").attr("src", localStorage.getItem('profpic'))
@@ -46,7 +46,8 @@ function getProfile() {
     })
 }
 
-$("#sign-in-btn").click(function () {
+$("#sign-in-btn").submit(function () {
+  console.log('masuk');
   event.preventDefault();
   let username = $('#username').val()
   let password = $('#password').val()
@@ -78,7 +79,6 @@ $("#register-btn").click(function () {
     email
   })
     .done(function (data) {
-      console.log(data);
       Swal.fire({ type: 'success', title: `Register Success`, showConfirmButton: false })
       setTimeout(function () {
         location.reload();
@@ -258,11 +258,11 @@ function getUndoneTodo() {
           </div>
         </div>
         `)
-        }
-      })
-      .fail(err => {
-        Swal.fire({ type: 'error', title: `${err.responseJSON.err.message}` })
-      })
+      }
+    })
+    .fail(err => {
+      Swal.fire({ type: 'error', title: `${err.responseJSON.err.message}` })
+    })
 }
 
 $.get('http://localhost:3000/weathers')

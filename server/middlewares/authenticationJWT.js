@@ -6,15 +6,15 @@ module.exports = (req,res,next) =>{
       req.decoded = jwt.verify(token, process.env.JWT_SECRET)
       next()
     } catch (error) {
-      throw {
+      next({
         status : 400,
         message :'Invalid Token'
-      }
+      }) 
     }
   }else{
-    throw {
+    next({
       status : 400,
       message : 'please login first'
-    }
+    }) 
   }
 }

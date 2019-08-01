@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema
 const { hash } = require('../helpers/bcrypt')
-const email = require('../helpers/nodemailer')
 
 let userSchema = new Schema({
     username: {
@@ -64,27 +63,20 @@ let userSchema = new Schema({
     password: {
         type: String,
         required: [true, `Required input password`],
-        minlength: [5, `Password must be 8 characters or more`],
-        match : [/^[a-zA-Z0-9]*$/ , 'Password can Only Contain Alpha Numeric']
+        minlength: [5, `Password must be 5 characters or more`],
+        match: [/^[a-zA-Z0-9]*$/, 'Password can Only Contain Alpha Numeric']
     },
-    profpic :{
-        type : String
+    profpic: {
+        type: String
     }
-},{versionKey : false})
+}, { versionKey: false, timestamps: true })
 
-userSchema.pre('save',function (next) {
+userSchema.pre('save', function (next) {
     this.password = hash(this.password)
-    email(this.email)
-    .then(data=>{
-        console.log(data);
-    })
-    .catch(err=>{
-        console.log(err);
-    })
     next()
 })
 
-userSchema.plugin(uniqueValidator);
+userSchema.plugin(uniqueValidator)
 
 let User = mongoose.model('user', userSchema)
 

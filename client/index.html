@@ -16,8 +16,8 @@
 
 <body>
   <nav>
-    <div class="nav-wrapper blue accent-4">
-      <a href="#!" class="brand-logo">Fancy Todo</a>
+    <div style="padding-left: 10px" class="nav-wrapper blue accent-4">
+      <a class="brand-logo">Fancy Todo</a>
       <ul class="right hide-on-med-and-down">
         <li><a onclick="signOut()" id="signout">Sign Out</a></li>
       </ul>
@@ -109,7 +109,7 @@
     </div>
     <div id="signIn">
       <div class="row">
-        <form class="col s12">
+        <form class="col s12" id="sign-in-btn">
           <div class="row">
             <div class="input-field col s12">
               <input id="username" type="text" class="validate">
@@ -124,7 +124,7 @@
           </div>
           <div class="flex-box">
             <button style="margin-right: 10px" class="btn waves-effect waves-light blue darken-4" type="submit" name="action"
-              id="sign-in-btn">Sign In
+              >Sign In
               <i class="material-icons right">send</i>
             </button>
           </div>

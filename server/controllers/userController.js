@@ -8,7 +8,6 @@ class UserController {
   static signup(req, res, next) {
     let { username, email, password } = req.body
     let newUser = { username, email, password }
-    console.log(newUser, 'ini user baruuuuu');
     userModel
       .create(newUser)
       .then((newUser) => {
@@ -19,7 +18,6 @@ class UserController {
 
   static signin(req, res, next) {
     let { username, password } = req.body
-    console.log('ini', username, password);
     userModel
       .findOne({
         username: username
@@ -32,7 +30,6 @@ class UserController {
               username: found.username,
               email: found.email
             }
-            console.log(payload);
             let token = sign(payload)
             res.status(200).json({ token })
           }

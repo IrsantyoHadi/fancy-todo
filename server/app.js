@@ -12,7 +12,7 @@ const app = express()
 
 const port = process.env.PORT
 
-mongoose.connect(`mongodb://localhost:27017/${process.env.DB_NAME}`, {
+mongoose.connect(process.env.DB_NAME, {
   useNewUrlParser: true
 }, (err) => {
   if (err) {
